@@ -1,0 +1,89 @@
+" vim completion via maralla completor
+"
+call plug#begin('~/.vim/plugged/')
+
+Plug 'w0rp/ale' "// Ale
+Plug 'henrynewcomer/vim-theme-papaya' "//themes
+Plug 'morhetz/gruvbox' "//themes
+Plug 'maralla/completor.vim' "// maralla compleion
+Plug 'ryanoasis/vim-devicons' "// icon
+Plug 'rafi/awesome-vim-colorschemes' "// colorschemes 
+Plug 'SirVer/ultisnips' " // ultisnips
+Plug 'dense-analysis/ale'
+Plug 'honza/vim-snippets' " // honza snippets
+Plug 'jiangmiao/auto-pairs'
+Plug 'mileszs/ack.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'kana/vim-textobj-user'
+Plug 'tpope/vim-unimpaired'
+"Plug 'sirver/ultisnips'
+"Plug 'BrandonRoehl/auto-omni'
+Plug 'embear/vim-localvimrc'
+
+call plug#end()
+
+" // satset njay...
+"
+set number
+set relativenumber
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set termguicolors
+set softtabstop=4
+set cursorline
+set mouse=a
+set background=dark
+colorscheme papaya_original 
+
+" // Ale custome
+"
+let g:ale_completion_autoimport = 10
+let g:ale_completion_enabled = 0
+let g:ale_completion_delay = 0
+let g:ale_python_pyls_executable =  'jedils'
+let g:ale_python_pyls_use_global = 0
+let g:ale_cache_executable_check_failures = v:null
+let g:ale_change_sign_column_color = 0
+let g:ale_command_wrapper = ''
+let g:ale_completion_delay = 100
+let g:ale_completion_enabled = 1
+let g:ale_completion_max_suggestions = 50
+let g:ale_echo_cursor = 1
+let g:ale_echo_msg_error_str = 'Error'
+let g:ale_echo_msg_format = '%code: %%s'
+let g:ale_echo_msg_info_str = 'Info'
+let g:ale_echo_msg_warning_str = 'Warning'
+let g:ale_enabled = 1
+let g:ale_fix_on_save = 0
+let g:ale_fixers = {}
+let g:ale_history_enabled = 1
+let g:ale_history_log_output = 1
+let g:ale_keep_list_window_open = 0
+let g:ale_lint_delay = 200
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_filetype_changed = 1
+let g:ale_lint_on_save = 0
+let g:ale_lint_on_text_changed = 1
+let g:ale_lint_on_insert_leave = 0
+let g:ale_linter_aliases = {}
+let g:ale_linters = {'python': ['jedils']}
+let g:ale_linters_explicit = 0
+let g:ale_list_window_size = 10
+let g:ale_list_vertical = 0
+
+set completeopt=menu,menuone,preview,noselect,noinsert
+set omnifunc=ale#completion#OmniFunc
+" // saya menyebuatnya auto recode history
+"
+set completeopt+=menuone,noselect,noinsert 
+set pumheight=22 " ukuran border completion
+set shortmess+=c 
+
+

@@ -1,0 +1,76 @@
+" vim completion via maralla completor
+"
+call plug#begin('~/.vim/plugged/')
+
+Plug 'henrynewcomer/vim-theme-papaya' "//themes
+Plug 'morhetz/gruvbox' "//themes
+Plug 'davidhalter/jedi-vim' "// jedi
+Plug 'BrandonRoehl/auto-omni' "// auto-omni
+Plug 'mhinz/vim-signify' " // signify
+Plug 'ryanoasis/vim-devicons' "// icon
+Plug 'rafi/awesome-vim-colorschemes' "// colorschemes
+Plug 'SirVer/ultisnips' " // ultisnips
+Plug 'honza/vim-snippets' " // honza snippets
+Plug 'jiangmiao/auto-pairs'
+
+call plug#end()
+
+" // satset njay...
+"
+set number
+set relativenumber
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set termguicolors
+set softtabstop=4
+set cursorline
+set mouse=a
+set background=dark
+colorscheme papaya_original
+
+" // saya menyebuatnya auto recode history
+"
+set completeopt+=menuone,noselect,noinsert
+set pumheight=5 " ukuran border completion
+set shortmess+=c
+
+let s:insert_count = 0
+function! OpenCompletion()
+    if string(v:char) =~ ' '
+        let s:insert_count = 0
+    else
+        let s:insert_count += 1
+    endif
+    if !pumvisible() && s:insert_count >= 2
+        silent! call feedkeys("\<C-n>", "n")
+    endif
+endfunction
+
+function! TurnOnAutoComplete()
+    augroup autocomplete
+        autocmd!
+        autocmd InsertLeave let s:insert_count = 0
+        autocmd InsertCharPre * silent! call OpenCompletion()
+    augroup END
+endfunction
+
+function! TurnOffAutoComplete()
+    augroup autocomplete
+        autocmd!
+    augroup END
+endfunction
+
+function! ReplayMacroWithoutAutoComplete()
+    call TurnOffAutoComplete()
+    let reg = getcharstr()
+    execute "normal! @".reg
+    call TurnOnAutoComplete()
+endfunction
+
+call TurnOnAutoComplete()
+nnoremap <silent> @ :call ReplayMacroWithoutAutoComplete()<CR>
+inoremap <expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
+
