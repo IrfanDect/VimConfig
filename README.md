@@ -1,2 +1,2 @@
 # Example
-![20220803_215928](https://user-images.githubusercontent.com/70370681/182628213-09f3d3c4-871d-4c7a-b28b-b0cf9252e30b.gif)
+![20220803_215928](https://user-images.githubusercontent.com/70370681/182632559-6ba0d4bc-46be-4409-85a2-4ff5b31dfec2.gif)
